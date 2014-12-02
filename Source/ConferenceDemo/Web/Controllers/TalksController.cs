@@ -8,11 +8,9 @@ namespace Web.Controllers
     public class TalksController : ApiController
     {
         IRepository _repository;
+
         public TalksController()
         {
-            var connectionString = ConfigurationManager.AppSettings["connectionString"];
-            var context = new DataContext(connectionString, new ConferenceDemoMappingConfiguration());
-            _repository = new Repository(context);
         }
 
         [HttpGet]
