@@ -35,6 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Data, Version=5.0.6.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Highway.Data.5.0.6.0\lib\net45\Highway.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Pavement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Highway.Pavement.0.3.0.0\lib\net40\Highway.Pavement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -58,10 +73,9 @@
       <Project>{0d8e36fe-9df2-4070-8319-61e9fce4b5b3}</Project>
       <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web\Web.csproj">
-      <Project>{6ee8b75d-d3d0-41f3-8433-2924fefe0cb9}</Project>
-      <Name>Web</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
