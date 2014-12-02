@@ -14,9 +14,19 @@ namespace Web.DI
             var connectionString = ConfigurationManager.AppSettings["connectionString"];
 
             container.Register(
-                Component.For<IMappingConfiguration>().ImplementedBy<ConferenceDemoMappingConfiguration>(),
-                Component.For<IDataContext>().ImplementedBy<DataContext>().DependsOn(new {ConnectionString = connectionString}),
-                Component.For<IRepository>().ImplementedBy<Repository>()
+                Component
+                    .For<IMappingConfiguration>()
+                    .ImplementedBy<ConferenceDemoMappingConfiguration>()
+                    .LifestyleSingleton(),
+                Component
+                    .For<IDataContext>()
+                    .ImplementedBy<DataContext>()
+                    .DependsOn(new {ConnectionString = connectionString})
+                    .LifestyleTransient(),
+                Component
+                    .For<IRepository>()
+                    .ImplementedBy<Repository>()
+                    .LifestyleTransient();
             );
         }
     }
