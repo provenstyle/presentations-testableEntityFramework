@@ -16,14 +16,7 @@ namespace DataTests
         [TestMethod]
         public void can_performance_test_queries()
         {
-            //Arrange
-            var dataContext = Helper.RealDataContext();
-            var query = new AllTalks();
-
-            //Act
-            query.RunPerformanceTest(dataContext, false, 50);
-
-            //Assert
+         
         }
     }
 }
