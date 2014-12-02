@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="TalksModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="mocking_the_repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
