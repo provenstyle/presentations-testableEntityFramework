@@ -51,6 +51,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Highway.Data.5.0.6.0\lib\net45\Highway.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Highway.Data.EntityFramework">
+      <HintPath>..\packages\Highway.Data.EntityFramework.5.0.6.0\lib\net45\Highway.Data.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Highway.Pavement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Highway.Pavement.0.3.0.0\lib\net40\Highway.Pavement.dll</HintPath>
