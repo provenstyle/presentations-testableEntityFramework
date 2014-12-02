@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Web.Models
 {
-    public class TalksModel
+    public class TalkModel
     {
         public TalkViewModel GetTalks(int speakerId)
         {

@@ -13,7 +13,7 @@ using Web.Models;
 namespace WebTests
 {
     [TestClass]
-    public class TalksModelTests
+    public class TalkModelTests
     {
         
     }
