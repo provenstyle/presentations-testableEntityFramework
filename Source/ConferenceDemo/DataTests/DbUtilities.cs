@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using Data.Entities;
@@ -26,7 +27,41 @@ namespace DataTests
         [TestMethod]
         public void SeedDatabase()
         {
+            const int speakerCount = 10;
+            var connectionString = ConfigurationManager.AppSettings["connectionString"];
+            var context = new TestDbContext(connectionString);
+
+            for (int i = 0; i < speakerCount; i++)
+            {
+                var speaker = new Speaker
+                {
+                    Name = Faker.Name.FullName(),
+                    Bio = Faker.Lorem.Paragraph(),
+                };
+
+                var submittedTalk = new Talk()
+                {
+                    Abstract = Faker.Lorem.Paragraph(),
+                    Title = Faker.Lorem.Sentence(2),
+                    Accepted = false,
+                    Speakers = new List<Speaker> { speaker }
+                };
+
+                var acceptedTalk = new Talk()
+                {
+                    Abstract = Faker.Lorem.Paragraph(),
+                    Title = Faker.Lorem.Sentence(2),
+                    Accepted = true,
+                    Speakers = new List<Speaker> { speaker }
+                };
+
+                context.Speakers.Add(speaker);
+                context.Talks.Add(submittedTalk);
+                context.Talks.Add(acceptedTalk);    
+            }
             
+
+            context.SaveChanges();
         }
     }
 
@@ -36,7 +71,7 @@ namespace DataTests
             : base(connectionString)
         { }
 
-        DbSet<Talk> Talks { get; set; }
-        DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Talk> Talks { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
     }
 }
