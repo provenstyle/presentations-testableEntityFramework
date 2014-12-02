@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Configuration;
 using System.Web.Http;
-using Data;
-using Data.Commands;
-using Data.Entities;
 using Data.Mappings;
-using Data.Queries;
 using Highway.Data;
 
 namespace Web.Controllers
@@ -28,39 +19,34 @@ namespace Web.Controllers
         [Route("api/talks")]
         public IHttpActionResult GetAll()
         {
-            var talks = _repository.Find(new AllTalks()).ToList();
-            return Ok(talks);
+            return Ok();
         }
 
         [HttpGet]
         [Route("api/v2/talks")]
-        public IHttpActionResult GetAllDefault()
+        public IHttpActionResult GetAllHighwayDefault()
         {
-            var talks = _repository.Find(new FindAll<Talk>()).ToList();
-            return Ok(talks);
+            return Ok();
         }
 
         [HttpGet]
         [Route("api/talks/{id}")]
         public IHttpActionResult GetById(int id)
         {
-            var talks = _repository.Find(new TalkById(id));
-            return Ok(talks);
+            return Ok();
         }
 
         [HttpGet]
         [Route("api/v2/talks/{id}")]
-        public IHttpActionResult GetByIdDefault(int id)
+        public IHttpActionResult GetByIdHighwayDefault(int id)
         {
-            var talks = _repository.Find(new GetById<int, Talk>(id));
-            return Ok(talks);
+            return Ok();
         }
 
         [HttpDelete]
         [Route("api/talks/{id}")]
         public IHttpActionResult DeleteTalk(int id)
         {
-            _repository.Execute(new DeleteTalk(id));
             return Ok();
         }
 
@@ -68,7 +54,6 @@ namespace Web.Controllers
         [Route("api/v2/talks/{id}")]
         public IHttpActionResult DeleteTalkAdvanced(int id)
         {
-            _repository.Execute(new DeleteTalkAdvanced(id));
             return Ok();
         }
 
@@ -76,8 +61,7 @@ namespace Web.Controllers
         [Route("api/talks/titles")]
         public IHttpActionResult GetTalkTitles()
         {
-            var titles = _repository.Find(new TalkTitles());
-            return Ok(titles);
+            return Ok();
         }
 
     }
