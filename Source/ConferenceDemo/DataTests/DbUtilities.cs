@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Entity;
+using Data;
 using Data.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +15,7 @@ namespace DataTests
         public void DropCreateDatabase()
         {
             var connectionString = ConfigurationManager.AppSettings["connectionString"];
-            var context = new TestDbContext(connectionString);
+            var context = new ConferenceDemoDbContext(connectionString);
 
             if (context.Database.Exists())
             {
@@ -29,7 +29,7 @@ namespace DataTests
         {
             const int speakerCount = 10;
             var connectionString = ConfigurationManager.AppSettings["connectionString"];
-            var context = new TestDbContext(connectionString);
+            var context = new ConferenceDemoDbContext(connectionString);
 
             for (int i = 0; i < speakerCount; i++)
             {
@@ -63,15 +63,5 @@ namespace DataTests
 
             context.SaveChanges();
         }
-    }
-
-    public class TestDbContext : DbContext
-    {
-        public TestDbContext(string connectionString)
-            : base(connectionString)
-        { }
-
-        public DbSet<Talk> Talks { get; set; }
-        public DbSet<Speaker> Speakers { get; set; }
     }
 }

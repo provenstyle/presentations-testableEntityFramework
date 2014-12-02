@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConferenceDemoDbContext.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Speaker.cs" />
     <Compile Include="Entities\Talk.cs" />
