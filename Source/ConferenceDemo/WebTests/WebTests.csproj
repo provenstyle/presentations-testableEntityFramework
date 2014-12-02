@@ -73,6 +73,10 @@
       <Project>{0d8e36fe-9df2-4070-8319-61e9fce4b5b3}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Web\Web.csproj">
+      <Project>{1a1bffb8-1191-4e8d-998c-acb66a11855e}</Project>
+      <Name>Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
