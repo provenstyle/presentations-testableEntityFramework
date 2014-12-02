@@ -68,6 +68,7 @@
     <Compile Include="Entities\Speaker.cs" />
     <Compile Include="Entities\Talk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\TalksBySpeakerId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
