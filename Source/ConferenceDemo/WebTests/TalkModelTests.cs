@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Dynamic;
-using Data;
 using Data.Entities;
 using Data.Queries;
 using Highway.Data;
@@ -27,7 +23,7 @@ namespace WebTests
                 {
                     new Talk{Accepted = true},
                     new Talk{Accepted = false}
-                }.AsQueryable());
+                });
 
             var model = new TalkModel(repo.Object);
 
@@ -35,8 +31,8 @@ namespace WebTests
             var talks = model.GetTalks(1);
 
             //Assert
-            Assert.AreEqual(DynamicEnumerable.Count(talks.AcceptedTalks), 1);
-            Assert.AreEqual(DynamicEnumerable.Count(talks.SubmittedTalks), 1);
+            Assert.AreEqual(1, talks.AcceptedTalks.Count());
+            Assert.AreEqual(1, talks.SubmittedTalks.Count());
         }
     }
 }
