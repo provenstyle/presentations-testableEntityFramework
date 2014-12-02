@@ -4,11 +4,11 @@ using Highway.Data;
 
 namespace Web.Models
 {
-    public class TalksModel
+    public class TalkModel
     {
         readonly IRepository _repository;
 
-        public TalksModel(IRepository repository)
+        public TalkModel(IRepository repository)
         {
             _repository = repository;
         }

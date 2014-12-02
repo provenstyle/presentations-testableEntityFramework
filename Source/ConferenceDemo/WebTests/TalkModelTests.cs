@@ -14,7 +14,7 @@ using Web.Models;
 namespace WebTests
 {
     [TestClass]
-    public class TalksModelTests
+    public class TalkModelTests
     {
         [TestMethod]
         public void returns_accepted_and_non_accepted_talks()
@@ -29,7 +29,7 @@ namespace WebTests
                     new Talk{Accepted = false}
                 }.AsQueryable());
 
-            var model = new TalksModel(repo.Object);
+            var model = new TalkModel(repo.Object);
 
             //Act
             var talks = model.GetTalks(1);
