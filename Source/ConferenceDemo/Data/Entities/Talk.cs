@@ -7,6 +7,6 @@ namespace Data.Entities
         public string Title { get; set; }
         public string Abstract { get; set; }
         public bool Accepted { get; set; }
-        public ICollection<Speaker> Speakers { get; set; }
+        public Speaker Speaker { get; set; }
     }
 }

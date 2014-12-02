@@ -44,7 +44,7 @@ namespace DataTests
                     Abstract = Faker.Lorem.Paragraph(),
                     Title = Faker.Lorem.Sentence(2),
                     Accepted = false,
-                    Speakers = new List<Speaker> { speaker }
+                    Speaker = speaker
                 };
 
                 var acceptedTalk = new Talk()
@@ -52,7 +52,7 @@ namespace DataTests
                     Abstract = Faker.Lorem.Paragraph(),
                     Title = Faker.Lorem.Sentence(2),
                     Accepted = true,
-                    Speakers = new List<Speaker> { speaker }
+                    Speaker = speaker
                 };
 
                 context.Speakers.Add(speaker);
