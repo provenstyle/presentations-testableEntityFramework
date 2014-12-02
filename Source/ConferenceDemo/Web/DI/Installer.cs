@@ -26,7 +26,7 @@ namespace Web.DI
                 Component
                     .For<IRepository>()
                     .ImplementedBy<Repository>()
-                    .LifestyleTransient();
+                    .LifestyleTransient()
             );
         }
     }
