@@ -35,8 +35,13 @@ namespace Web
         {
             var container = new WindsorContainer();
             container.Register(
-                Component.For<IWindsorContainer>().Instance(container),
-                Types.FromThisAssembly().BasedOn<ApiController>()
+                Component
+                    .For<IWindsorContainer>()
+                    .Instance(container),
+                Types
+                    .FromThisAssembly()
+                    .BasedOn<ApiController>()
+                    .LifestyleTransient()
             );
 
             container.Install(FromAssembly.This());
