@@ -19,21 +19,13 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            _repository = new Mock<IRepository>();
-            _repository
-                .Setup(x => x.Find(Moq.It.IsAny<TalksBySpeakerId>()))
-                .Returns(new List<Talk>
-                        {
-                            new Talk()
-                        });
         };
 
         Because of = () =>
         {
-            _talks = _repository.Object.Find(new TalksBySpeakerId(1));
         };
 
-        It returns_repository_data = () => _talks.Count().ShouldEqual(1);
+        It returns_repository_data = () => {};
 
         static Mock<IRepository> _repository;
         static IEnumerable<Talk> _talks;
@@ -43,23 +35,15 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            var dataContext = new Mock<IDataContext>();
-            dataContext.Setup(x => x.AsQueryable<Talk>())
-                .Returns(new List<Talk>
-                {
-                    new Talk(),
-                    new Talk()
-                }.AsQueryable());
-
-                _repository = new Repository(dataContext.Object);
+            
         };
 
         Because of = () =>
         {
-            _talks = _repository.Find(new AllTalks());
+          
         };
 
-        It returns_datacontext_data = () => _talks.Count().ShouldEqual(2);
+        It returns_datacontext_data = () => {};
 
         static Repository _repository;
         static IEnumerable<Talk> _talks;
@@ -69,23 +53,18 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            _dataContext = new Mock<IDataContext>();
-            _dataContext.Setup(x => x.AsQueryable<Talk>())
-                .Returns(new List<Talk>
-                {
-                    new Talk(),
-                    new Talk()
-                }.AsQueryable());
-
-            _dataContext
-                .Setup(x => x.Commit());
-
-            _repository = new Repository(_dataContext.Object);
+            
         };
 
-        Because of = () => _repository.Context.Commit();
+        Because of = () =>
+        {
 
-        It should_be_called_once = () => _dataContext.Verify(x=>x.Commit(), Times.Once);
+        };
+
+        It should_be_called_once = () =>
+        {
+            
+        };
 
         static Mock<IDataContext> _dataContext;
         static Repository _repository;
@@ -95,18 +74,15 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            var dataContext = new InMemoryDataContext();
-            dataContext.Add(new Talk());
-            dataContext.Add(new Talk());
-            _repository = new Repository(dataContext);
         };
 
         Because of = () =>
         {
-            _talks = _repository.Find(new AllTalks());
         };
 
-        It should_return_inmemory_data = () => _talks.Count().ShouldEqual(2);
+        It should_return_inmemory_data = () =>
+        {
+        };
         
         static Repository _repository;
         static IEnumerable<Talk> _talks;
@@ -116,23 +92,19 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            var dataContext = new InMemoryDataContext();
-            var speaker = new Speaker {Id = 7};
-            dataContext.Add(new Talk {Speaker = speaker, Accepted = false});
-            dataContext.Add(new Talk {Speaker = speaker, Accepted = false});
-            dataContext.Add(new Talk {Speaker = speaker, Accepted = true});
-
-            var repository = new Repository(dataContext);
-            _model = new TalksModel(repository);
         };
 
         Because of = () =>
         {
-            _vm = _model.GetTalks(7);
         };
 
-        It should_have_accepted_talks = () => _vm.AcceptedTalks.Count().ShouldEqual(1);
-        It should_have_submitted_talks = () => _vm.SubmittedTalks.Count().ShouldEqual(2);
+        It should_have_accepted_talks = () =>
+        {
+        };
+        
+        It should_have_submitted_talks = () =>
+        {
+        };
 
         static TalksModel _model;
         static TalkViewModel _vm;
