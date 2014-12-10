@@ -18,21 +18,10 @@ namespace WebTestsMspec
     {
         Establish context = () =>
         {
-            var repo = new Mock<IRepository>();
-            repo
-                .Setup(x => x.Find(Moq.It.IsAny<TalksBySpeakerId>()))
-                .Returns(new List<Talk>
-                {
-                    new Talk{Accepted = true},
-                    new Talk{Accepted = false}
-                });
-
-            _model = new TalkModel(repo.Object);
         };
 
         Because of = () =>
         {
-            _talks = _model.GetTalks(1);
         };
 
         It should_return_accepted_talks = () => _talks.AcceptedTalks.Count().ShouldEqual(1);
